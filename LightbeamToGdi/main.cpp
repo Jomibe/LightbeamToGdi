@@ -44,9 +44,24 @@ int main() {
             	if(DEBUG_GOTFPARTY) {cout << "DEBUG : Got first party ";};
                 // First Parties identifizieren (hostname)
                 firstParty = lastHostname.substr(17, lastHostname.size()-19); // letzte zwei Zeichen abschneiden, 17+2
-                g1->V[currentKnoten].Name =firstParty;
-                KnotenLastFirst = currentKnoten;
-                currentKnoten++;
+
+                checkThirdPartyExists = false;
+                for (int i = 1; i < currentKnoten; i++) { // gibt es bereits einen Knoten mit dem Namen der ThirdParty?
+                    if(g1->V[i].Name == firstParty) {
+                        checkThirdPartyExists = true;
+                        KnotenLastFirst = i;
+                    }
+                }
+
+                if(!checkThirdPartyExists) { // Pruefen ob Knoten mit Namen von ThirdParty bereits existiert
+                    g1->V[currentKnoten].Name =firstParty;
+                    KnotenLastFirst = currentKnoten;
+                    currentKnoten++;
+                }
+
+
+
+
 
                 if(DEBUG_GOTFPARTY) {cout << firstParty << endl;};
             }
@@ -61,21 +76,6 @@ int main() {
                     thirdParty = thirdParty.substr(0, ende);
                     getline (jsonimport,line); // naechste Zeile
                     if(DEBUG_THIRDPARTIES) {cout << "DEBUG :  \\-> " << thirdParty << endl;};
-
-
-
-                        // Knoten für erste ThirdParty des ersten FirstParty Knoten erstellen
-                    g1->V[currentKnoten].Name = thirdParty;
-                    if(DEBUG_OUTPUT) {cout << "DEBUG : Erstelle Knoten" << endl;};
-
-
-                        // Kante erstellen
-                    g1->insert_Edge(KnotenLastFirst, currentKnoten);
-                    g1->insert_Edge(currentKnoten, KnotenLastFirst);
-                    if(DEBUG_OUTPUT) {cout << "DEBUG : Erstelle Kanten" << endl;};
-
-                    currentKnoten++;
-                    if(DEBUG_OUTPUT) {cout << "DEBUG : Inkrementiere currentKnoten" << endl;};
 
                         // existiert die ThirdParty bereits bei einer anderen FirstParty?
                         // Prüfung, ob ThirdParty bereits existiert: falls ja, verwende den Knoten für die Kante; falls nein erstelle einen neuen
