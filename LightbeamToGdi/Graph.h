@@ -32,7 +32,7 @@ public:
 };
 
 void Graph::insert_Edge(int u, int v){             //Teste ob u!= v
-    if(u==v || u<1 || v<1) throw runtime_error("Kante braucht zwei verschiedene Knoten");
+    //if(u==v || u<1 || v<1) throw runtime_error("Kante braucht zwei verschiedene Knoten"); //der case existiert in unserem fall
     //if(G.Adj[u][v]==true) throw runtime_error("Eine Kante bereits vorhanden");    //nicht notwendig
     this->Adj[u][v]=true;
 
