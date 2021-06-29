@@ -3,11 +3,12 @@
 
 /*
 Struktur eines Graphen, so wie er bei der Breitensuche im Buch
-Algorithmen – Eine Einführung; Cormen, Leiserson, Rivest, Stein
+Algorithmen â€“ Eine EinfÃ¼hrung; Cormen, Leiserson, Rivest, Stein
 benutzt wird
  */
 #include<iostream>
 #include<stdexcept>
+#include <cstdlib>
 #include "string"
 #include "knoten.h"
 
@@ -21,13 +22,13 @@ public:
     Knoten V[MAX_KNOTEN];                       // Feld aller Knoten
     int knotenzahl;                             // Anzahl, der im Graph definierten Knoten
     int Adj[MAX_KNOTEN][MAX_KNOTEN];            // Adjazentmatrix
-    void ZeroGraph(int knoten=0);               // knotenzahl auf 0 setzen, Adjazentmatrix löschen
+    void ZeroGraph(int knoten=0);               // knotenzahl auf 0 setzen, Adjazentmatrix lÃ¶schen
     void insert_Edge(int u, int v);   //Kante auf 1
     void Delete_Edge(Graph &G,int u, int v);    //Kante auf 0
     void Flip_Edge(Graph &G,int u, int v);      //Kante zwischen 0 und 1 wechseln
     void Graph_Debug(Graph &G);                 //Graph anzeigen
-    void Insert_Random_Edge(Graph &G);          //zufällige Kante hinzufügen
-    void Insert_Random_i_Edges(Graph &G,int i); //bestimmte anzahl zufälliger Kanten hinzufügen
+    void Insert_Random_Edge(Graph &G);          //zufÃ¤llige Kante hinzufÃ¼gen
+    void Insert_Random_i_Edges(Graph &G,int i); //bestimmte anzahl zufÃ¤lliger Kanten hinzufÃ¼gen
     void ausgabe_gdi_format();          //ausgabe im .gdi gerechten Format
 };
 
