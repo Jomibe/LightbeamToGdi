@@ -1,6 +1,8 @@
 #ifndef KNOTEN_H
 #define KNOTEN_H
 
+#include <climits>
+
 enum KnotenFarbe {WEISS,GRAU,SCHWARZ};
 #define NIL -1
 #define UNENDLICH INT_MAX
@@ -8,7 +10,7 @@ enum KnotenFarbe {WEISS,GRAU,SCHWARZ};
 class Knoten
 {
 public:
-    KnotenFarbe farbe;  // Farbmarkierung für Breitensuche
+    KnotenFarbe farbe;  // Farbmarkierung fÃ¼r Breitensuche
     int d;              // Distanz zum Startknoten bei der Breitensuche
     int vorgaenger;
     Knoten(){d=UNENDLICH; vorgaenger=NIL; farbe=WEISS; }
